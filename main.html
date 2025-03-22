@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baca Ucapan?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s, font-size 0.3s;
+        }
+        .yes-button {
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 5px;
+        }
+        .yes-button:hover {
+            background-color: #ff1493;
+        }
+        .no-button {
+            background-color: #ccc;
+            color: black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Read your birthday wish from me? 🎉</h1>
+    <div class="button-container">
+        <button id="yesButton" class="yes-button" onclick="window.location.href='KartuUcapan.html'">Yes</button>
+        <button id="noButton" class="no-button">No</button>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById("yesButton");
+        let noButton = document.getElementById("noButton");
+
+        let sizeYes = 16; // Ukuran awal tombol Yes
+        let sizeNo = 16; // Ukuran awal tombol No
+        let texts = [
+            "Serius nih?", 
+            "Please baca dong 😢", 
+            "Bentar aja ko", 
+            "Yakin nolak?", 
+            "Ayo dong 😭", 
+            "Cuma sebentar kok!", 
+            "Please 😭💖", 
+            "Jangan gitu dong...", 
+            "Kalo ga baca nyesel lho!", 
+            "Oke deh... aku pasrah 😞",
+            "Pokoknya ini bakal ngegedein terus sampe kamu bilang iya"
+        ];
+        let clickCount = 0;
+
+        noButton.addEventListener("click", function() {
+            if (clickCount < texts.length - 1) {
+                yesButton.textContent = texts[clickCount];
+                clickCount++;
+            } else {
+                yesButton.textContent = texts[texts.length - 1]; // Tetap di teks terakhir
+            }
+            sizeYes += 5; // Tombol Yes membesar
+            sizeNo -= 2;  // Tombol No mengecil
+            yesButton.style.fontSize = sizeYes + "px";
+            noButton.style.fontSize = sizeNo + "px";
+
+            // Jika tombol No terlalu kecil, disable klik
+            if (sizeNo <= 5) {
+                noButton.disabled = true;
+                noButton.style.opacity = 0.5;
+            }
+        });
+    </script>
+</body>
+</html>

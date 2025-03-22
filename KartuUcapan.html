@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffe4e1;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .title {
+            font-size: 40px;
+            color: #ff69b4;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        .dino {
+            width: 200px;
+            margin: 20px;
+        }
+        .flower {
+            width: 200px;
+            position: absolute;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        .flower-left { left: 10%; top: 20%; width: 200px; }
+        .flower-right { right: 10%; top: 30%; width: 200px; }
+        .album-container {
+            margin-top: 30px;
+        }
+        .album-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .album-button:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+        .album {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .album.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .album img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .album img:hover {
+            transform: scale(1.1);
+        }
+        /* Tambahan untuk video agar berada di tengah */
+        .video-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        video {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+    <script>
+        function toggleAlbum() {
+            var album = document.getElementById("album");
+            if (album.classList.contains("show")) {
+                album.classList.remove("show");
+                setTimeout(() => { album.style.display = "none"; }, 500);
+            } else {
+                album.style.display = "block";
+                setTimeout(() => { album.classList.add("show"); }, 10);
+            }
+        }
+
+        function toggleVideo() {
+            var videoContainer = document.getElementById("videoContainer");
+            var video = document.getElementById("specialVideo");
+            if (videoContainer.style.display === "none") {
+                videoContainer.style.display = "block";
+                video.play();
+            } else {
+                videoContainer.style.display = "none";
+                video.pause();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Happy Birthday My Girlfriend, Feliii 🎉🎂</h1>
+        <img src="https://i.pinimg.com/736x/83/38/36/8338361da971ec5315f4502b21041e90.jpg" alt="Dino Nailong" class="dino">
+        <p>Happy Birthday yang ke (10x2)+1 taun 🥳💖</p>
+        <p>Wish you all the best, tambah pinter, tambah cantik, tambah lucu (udah mentok sih), tambah baik, cepet beres cosplay guru dan jadi guru beneran, cepet2 skripsian</p>
+        <p>Thank you for coming in my life, make my life more meaningful and shining</p>
+        <p>Can't wait to see you soon 🎉</p>
+        <br>
+        <p>Terakhir, Keren ga bisa gini, ga terima jawaban engga pokonya ya</p>
+        <p>Hmph, Mojok</p>
+    </div>
+
+    <!-- Tombol Play Video -->
+    <button class="album-button" onclick="toggleVideo()">Just A video I say that to you</button>
+    
+    <!-- Container untuk Video -->
+    <div class="video-container" id="videoContainer">
+        <video id="specialVideo" controls>
+            <source src="vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="album-container">
+        <button class="album-button" onclick="toggleAlbum()">Our Special Moments</button>
+        <div id="album" class="album">
+            <img src="1.jpg" alt="Foto 1">
+            <img src="2.jpg" alt="Foto 2">
+            <img src="3.jpeg" alt="Foto 3">
+            <img src="4.png" alt="Foto 4">
+        </div>
+    </div>
+    
+    <img src="https://cdn-icons-png.flaticon.com/512/5562/5562272.png" alt="Ultah" class="flower flower-left">
+</body>
+</html>
